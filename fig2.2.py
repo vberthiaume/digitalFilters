@@ -3,6 +3,7 @@
 import numpy as np
 import scipy.signal
 
+
 N = 10 			# length of test input signal
 NB = N/2		# block length
 x = np.arange(1,N)	# test input signal
