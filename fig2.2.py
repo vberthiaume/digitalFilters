@@ -10,29 +10,20 @@ A = [1.0]      		# feedback coefficients (no-feedback case)
 
 
 # PROCESS IT ALL IN ONE SHOT
-y1 = scipy.signal.lfilter(B, A, x)       
-print "all in one shot: ", y1
+y = scipy.signal.lfilter(B, A, x)       
+print "all in one shot:", y
+
+
+
 
 # PROCESS IT IN BATCHES
-NB = N/2		# block length
+NB = N/2		
+y1, Sf  = scipy.signal.lfilter(B, A, x[0:NB], zi = [0])       
+y2, Sf2 = scipy.signal.lfilter(B, A, x[NB:N], zi = Sf)  
+print "in 2 shots:\t", y1, y2
 
 
 
-# process block 1
-#[y1, Sf] = scipy.signal.lfilter(B, A, x[1:NB])       
-
-
-#the problem with stuff below is that i don't understand how to use lfilter in a block way. 
-#apparently this is possible, see here:
-#http://stackoverflow.com/questions/8922657/matlab-filter-with-scipy-lfilter
-
-# process block 2
-#y2 = scipy.signal.lfilter(B, A, x[NB+1:N], Sf)  
-# print input and output for block 1
-#for i in range (1, NB):   
-#  disp(sprintf('x(%d)=%f\ty(%d)=%f',i,x(i),i,y1(i)));
-# print input and output for block 2
-#for i in range (NB+1, N):
 #   disp(sprintf('x(%d)=%f\ty(%d)=%f',i,x(i),i,y2(i-NB)));
 
 
