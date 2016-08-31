@@ -3,24 +3,41 @@
 import numpy as np
 import scipy.signal
 import sys
+import matplotlib.pyplot as plt
 
 ################################ FIG J.10 P.704 ################################
 #swanalplot.m - plots needed by swanal.m
-def swanalplot():  
-    figure(gcf)
-    subplot(2,1,1)
-    ttl = sprintf('Filter Input Sinusoid, f(%d)=%0.2f',k,f(k))
-    myplot(t,s,'*k',ttl)
-    tinterp = np.arange(0, t[end], (t(2)-t(1))/10)      # interpolated time axis
-    si = ampin*cos(2*pi*f(k)*tinterp+phasein)  # for plot
-    text(-1.5,0,'(a)')
-    plot(tinterp,si,'--k')
-    subplot(2,1,2)
-    ttl='Filter Output Sinusoid'
-    myplot(t,y,'*k',ttl)
-    text(-1.5,0,'(b)')
+def swanalplot(t, s, f, k, y):  
 
-    saveplot(sprintf('../eps/swanal-%d.eps',k))
+    #subplot(2,1,1)
+    #ttl = sprintf('Filter Input Sinusoid, f(%d)=%0.2f',k,f(k))
+    #myplot(t,s,'*k',ttl)
+    #tinterp = np.arange(0, t[end], (t(2)-t(1))/10)      # interpolated time axis
+    #si = ampin*cos(2*pi*f(k)*tinterp+phasein)           # for plot
+    #text(-1.5,0,'(a)')
+    #plot(tinterp,si,'--k')
+
+    #subplot(2,1,2)
+    #ttl='Filter Output Sinusoid'
+    #myplot(t,y,'*k',ttl)
+    #text(-1.5,0,'(b)')
+
+    #saveplot(sprintf('../eps/swanal-%d.eps',k))
+
+    fig, axarr = plt.subplots(2, sharex=False)
+
+    title     = '%s %d %s %0.2f' % ('Filter Input Sinusoid, f(', k, ') = ', f[k])
+    axarr[0].set_title(title)
+    axarr[0].plot(t, s)
+
+    tinterp = np.arange(0, len(t), (t[2]-t[1])/10)                  # interpolated time axis
+    si      = ampin * np.cos(2 * np.pi * f[k] * tinterp + phasein)  # for plot
+    axarr[0].plot(tinterp,si)
+
+    axarr[1].set_title('Filter Output Sinusoid')
+    axarr[1].plot(t, y)
+
+    plt.show()
 
 ################################ FIG J.11 P.705 ################################
 # swanalmainplot.m
@@ -94,7 +111,7 @@ def swanal(t,f,B,A):
             phaseout = mod2pi(phaseout)         # reduce to [-pi,pi)
 
         phases[k] = phaseout-phasein
-        swanalplot                              # signal plotting script
+        swanalplot(t, s, f, k, y)                              # signal plotting script
 
     return gains, phases
 
@@ -116,5 +133,5 @@ t               = np.arange(0, tmax, dt)        # sampled time axis
 ampin           = 1                             # test input signal amplitude
 phasein         = 0                             # test input signal phase
 [gains,phases]  = swanal(t,f/fs,B,A)            # sine-wave analysis
-swanalmainplot                                  # final plots and comparison to theory  
+swanalmainplot()                                # final plots and comparison to theory  
 

@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="fig2.2.py" />
     <Compile Include="fig2.3-4.py" />
+    <Compile Include="matplotlibTest.py" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
