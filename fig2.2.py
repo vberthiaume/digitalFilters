@@ -3,7 +3,7 @@
 import numpy as np
 import scipy.signal
 
-N = 10 			# length of test input signal
+N = 10 			    # length of test input signal
 x = np.arange(1,N)	# test input signal
 B = [1.0, 1.0]  	# feedforward coefficients
 A = 1.0      		# feedback coefficients (no-feedback case)
