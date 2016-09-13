@@ -29,6 +29,7 @@
     <Compile Include="myplot.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="swanac.py" />
     <Compile Include="swanalmainplot.py" />
     <Compile Include="swanalplot.py" />
   </ItemGroup>
