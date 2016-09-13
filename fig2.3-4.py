@@ -35,29 +35,29 @@ def swanal(t,f,B,A):
     else : 
         error('Need to set transient response duration here')
 
-    for k in range (len(f)):                 # loop over analysis frequencies
-        s   = ampin*np.cos(2*np.pi*f[k]*t+phasein)    # test sinusoid
-        y   = scipy.signal.lfilter(B,A,s)                     # run it through the filter
-        yss = y[ntransient:len(y)]           # chop off transient
+    for k in range (len(f)):                            # loop over analysis frequencies
+        s   = ampin*np.cos(2*np.pi*f[k]*t+phasein)      # test sinusoid
+        y   = scipy.signal.lfilter(B,A,s)               # run it through the filter
+        yss = y[ntransient:len(y)]                      # chop off transient
         
         # measure output amplitude as max (SHOULD INTERPOLATE):
-        #[ampout, peakloc] = np.max(abs(yss))       # ampl. peak & index
+        #[ampout, peakloc] = np.max(abs(yss))           # ampl. peak & index
         yss = abs(yss)
-        ampout, peakloc = np.max(yss), np.argmax(yss) # ampl. peak & index	
+        ampout, peakloc = np.max(yss), np.argmax(yss)   # ampl. peak & index	
 
-        gains[k] = ampout/ampin                 # amplitude response
+        gains[k] = ampout/ampin                         # amplitude response
      
-        if ampout < sys.float_info.epsilon:     # eps returns "machine epsilon"
-            phaseout = 0                        # phase is arbitrary at zero gain
+        if ampout < sys.float_info.epsilon:             # eps returns "machine epsilon"
+            phaseout = 0                                # phase is arbitrary at zero gain
         else:
-            sphase = 2*np.pi*f[k]*(peakloc+ntransient-1)
+            sphase = 2*np.pi * f[k] * (peakloc+ntransient-1)
 
             # compute phase by inverting sinusoid (BAD METHOD):
             phaseout = np.arccos(yss[peakloc]/ampout) - sphase
-            phaseout = mod2pi(phaseout)         # reduce to [-pi,pi)
+            phaseout = mod2pi(phaseout)                 # reduce to [-pi,pi)
 
         phases[k] = phaseout-phasein
-        splot.swanalplot(t, s, f, k, y, ampin, phasein)                              # signal plotting script
+        #splot.swanalplot(t, s, f, k, y, ampin, phasein)                              # signal plotting script
 
     return gains, phases
 
@@ -73,10 +73,10 @@ N               = 10.0                          # number of sinusoidal test freq
 fs              = 1.0                           # sampling rate in Hz (arbitrary)
 fmax            = fs/2                          # highest frequency to look at
 df              = fmax/(N-1)                    # spacing between frequencies
-f               = np.arange(0, fmax, df)        #sampled frequency axis
+f               = np.arange(0, fmax+df/2, df)        # sampled frequency axis
 dt              = 1/fs                          # sampling interval in seconds
 tmax            = 10.0                          # number of seconds to run each sine test
-t               = np.arange(0, tmax, dt)        # sampled time axis
+t               = np.arange(0, tmax+dt/2, dt)        # sampled time axis
 
 #ACTUAL ANALYSES
 [gains, phases]  = swanal(t,f/fs,B,A)           # sine-wave analysis

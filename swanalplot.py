@@ -31,6 +31,7 @@ def swanalplot(t, s, f, k, y, ampin, phasein):
     axarr[0].plot(tinterp,si,'--k')
 
     axarr[1].set_title('Filter Output Sinusoid')
-    axarr[1].plot(t, y, '*k')
+    #axarr[1].stem(t, y, '*k')
+    axarr[1].stem(t, y)
 
     plt.show()

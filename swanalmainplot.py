@@ -24,7 +24,7 @@ def swanalmainplot(f, fs, gains, phases):
     axarr[0].plot(f, tar, '-k')
     
     tpr = -np.pi * f/fs             # theoretical phase response
-    pscl = 1/(2*np.pi)              # convert radian phase shift to cycles
+    pscl = 1.0/(2*np.pi)              # convert radian phase shift to cycles
     axarr[1].plot(f, tpr*pscl,'-k')
     axarr[1].grid()
     axarr[1].set_title('Phase Response')
