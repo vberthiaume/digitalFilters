@@ -7,11 +7,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def swanalmainplot(f, fs, gains, phases):
+def swanalmainplot(f, fs, gains, phases, main_title="Figure 2.7 p. 128"):
     
     fig, axarr = plt.subplots(2, sharex=False)
 
-    fig.suptitle("Figure 2.7 p. 128", fontsize=14)
+    fig.suptitle(main_title, fontsize=14)
     
     #freqplot(f, gains, '*k', ttl, 'Frequency (Hz)', 'Gain')
     axarr[0].plot(f, gains, '*k')
