@@ -57,7 +57,7 @@ def swanal(t,f,B,A):
             phaseout = mod2pi(phaseout)         # reduce to [-pi,pi)
 
         phases[k] = phaseout-phasein
-        #splot.swanalplot(t, s, f, k, y)                              # signal plotting script
+        splot.swanalplot(t, s, f, k, y, ampin, phasein)                              # signal plotting script
 
     return gains, phases
 
@@ -66,6 +66,7 @@ def swanal(t,f,B,A):
 # swanalmain.m - simulated sine-wave analysis on the simplest lowpass filter:
 # y(n) = x(n)+x(n-1)}
 
+#VARIABLES
 B               = [1,1]                         # filter feedforward coefficients
 A               = [1]                           # filter feedback coefficients (none)
 N               = 10.0                          # number of sinusoidal test frequencies
@@ -76,8 +77,8 @@ f               = np.arange(0, fmax, df)        #sampled frequency axis
 dt              = 1/fs                          # sampling interval in seconds
 tmax            = 10.0                          # number of seconds to run each sine test
 t               = np.arange(0, tmax, dt)        # sampled time axis
-ampin           = 1                             # test input signal amplitude
-phasein         = 0                             # test input signal phase
+
+#ACTUAL ANALYSES
 [gains, phases]  = swanal(t,f/fs,B,A)           # sine-wave analysis
 smain.swanalmainplot(f, fs, gains, phases)      # final plots and comparison to theory  
 

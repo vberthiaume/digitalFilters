@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def swanalplot(t, s, f, k, y):  
+def swanalplot(t, s, f, k, y, ampin, phasein):  
 
     #subplot(2,1,1)
     #ttl = sprintf('Filter Input Sinusoid, f(%d)=%0.2f',k,f(k))
