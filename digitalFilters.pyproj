@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b8087f00-808b-4511-90f0-d64a1c3e2dfe}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>simplpnfa.py</StartupFile>
+    <StartupFile>ch3\ch3comb.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -22,17 +22,22 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="fig2.2.py" />
-    <Compile Include="fig2.3-4.py" />
-    <Compile Include="freqplot.py" />
-    <Compile Include="matplotlibTest.py" />
-    <Compile Include="myplot.py">
+    <Compile Include="ch2\fig2.2.py" />
+    <Compile Include="ch2\fig2.3-4.py" />
+    <Compile Include="ch2\freqplot.py" />
+    <Compile Include="ch2\matplotlibTest.py" />
+    <Compile Include="ch2\myplot.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="simplpnfa.py" />
-    <Compile Include="swanac.py" />
-    <Compile Include="swanalmainplot.py" />
-    <Compile Include="swanalplot.py" />
+    <Compile Include="ch2\simplpnfa.py" />
+    <Compile Include="ch2\swanac.py" />
+    <Compile Include="ch2\swanalmainplot.py" />
+    <Compile Include="ch2\swanalplot.py" />
+    <Compile Include="ch3\ch3comb.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ch2\" />
+    <Folder Include="ch3\" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
