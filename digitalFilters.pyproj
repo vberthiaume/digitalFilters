@@ -29,6 +29,8 @@
     <Compile Include="myplot.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="swanalmainplot.py" />
+    <Compile Include="swanalplot.py" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
