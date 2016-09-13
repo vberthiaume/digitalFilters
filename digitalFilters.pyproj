@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b8087f00-808b-4511-90f0-d64a1c3e2dfe}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>fig2.3-4.py</StartupFile>
+    <StartupFile>simplpnfa.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -29,6 +29,7 @@
     <Compile Include="myplot.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="simplpnfa.py" />
     <Compile Include="swanac.py" />
     <Compile Include="swanalmainplot.py" />
     <Compile Include="swanalplot.py" />
