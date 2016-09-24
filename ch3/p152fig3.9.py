@@ -61,7 +61,7 @@ import matplotlib.pyplot as plt
 
 
 # Example comb filter:
-
+N = 50
 # Feedforward coeffs
 g1 = 0.5 ** 3 
 B = [1, 0, 0, g1]              
@@ -69,12 +69,10 @@ B = [1, 0, 0, g1]
 # Feedback coefficients
 g2 = 0.9 ** 5 
 A = [1, 0, 0, 0, 0, g2]          
-h = scipy.signal.lfilter(B, A, np.hstack((1, np.zeros(50))))    # Impulse response
+h = scipy.signal.lfilter(B, A, np.hstack((1, np.zeros(N))))    # Impulse response
 
-
-#axarr[0].set_title('impulse response')
-plt.stem(np.arange(len(h)), h)
-
+plt.stem(np.arange(N+1), h)
+plt.show()
 
 # Matlab-compatible plot:
 #clf 
