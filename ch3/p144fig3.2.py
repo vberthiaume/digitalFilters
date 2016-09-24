@@ -10,7 +10,7 @@ def filterslow(B, A, x):
     xv = x  #x(:)          # ensure column vector
 
     # do the FIR part using vector processing
-    v = B(1)*xv
+    v = B[0]*xv
     if NB > 1:
         for i in np.arange(1, min(NB,Nx)) :
             xdelayed = [np.zeros(i-1,1), xv[0:Nx-i+1]]  #this could be i+2
@@ -36,7 +36,7 @@ def filterslow(B, A, x):
 
 x  = np.random.random(10000)              # random input signal
 B  = np.random.random(101)                # random coefficients
-A  = [1, 0.001*np.random.random(100)]     # random but probably stable
+A  = np.hstack((1, 0.001*np.random.random(100)))     # random but probably stable
 
 #tic 
 #yf = scipy.signal.lfilter(B, A, x)
