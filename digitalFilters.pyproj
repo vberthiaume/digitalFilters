@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b8087f00-808b-4511-90f0-d64a1c3e2dfe}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>ch3\ch3comb.py</StartupFile>
+    <StartupFile>ch3\p144fig3.2.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -33,7 +33,8 @@
     <Compile Include="ch2\swanac.py" />
     <Compile Include="ch2\swanalmainplot.py" />
     <Compile Include="ch2\swanalplot.py" />
-    <Compile Include="ch3\ch3comb.py" />
+    <Compile Include="ch3\p142comb.py" />
+    <Compile Include="ch3\p144fig3.2.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ch2\" />
