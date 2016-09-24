@@ -12,14 +12,14 @@ def filterslow(B, A, x):
     # do the FIR part using vector processing
     v = B[0]*xv
     if NB > 1:
-        for i in np.arange(1, min(NB,Nx)) :
-            xdelayed = [np.zeros(i-1,1), xv[0:Nx-i+1]]  #this could be i+2
-            v = v + B(i) * xdelayed
+        for i in np.arange(1, min(NB,Nx)):
+            xdelayed = np.hstack((np.zeros(i-1), xv[0:Nx-i+1]))  #this could be i+2
+            v = v + B[i] * xdelayed
     
     # fir part done, sitting in v
 
     # The feedback part is intrinsically scalar, so this loop is where we spend a lot of time.
-    y  = zeros(len(x),1)        # pre-allocate y
+    y  = np.zeros(len(x))        # pre-allocate y
     ac = -A[1:NA]              # could be NA +1
     for i in range (Nx):                 # loop over input samples
         t = v[i]                    # initialize accumulator
@@ -29,17 +29,17 @@ def filterslow(B, A, x):
                     t += ac[j]*y[i-j]
                 #else y(i-j) = 0
         y[i] = t
-    y = reshape(y, len(x)) # in case x was a row vector
+    #y = reshape(y, len(x)) # in case x was a row vector
     return y
 
 
-
-x  = np.random.random(10000)              # random input signal
-B  = np.random.random(101)                # random coefficients
-A  = np.hstack((1, 0.001*np.random.random(100)))     # random but probably stable
+N = 10000
+x  = np.random.random(N)                        # random input signal
+B  = np.random.random(101)                          # random coefficients
+A  = np.hstack((1, 0.001*np.random.random(100)))    # random but probably stable
 
 #tic 
-#yf = scipy.signal.lfilter(B, A, x)
+yf = scipy.signal.lfilter(B, A, x)
 #ft = toc
 #tic 
 yfs = filterslow(B, A, x)
@@ -47,13 +47,16 @@ yfs = filterslow(B, A, x)
 
 
 # my plottings
-fig, axarr = plt.subplots(2, sharex=False)
+fig, axarr = plt.subplots(3, sharex=False)
 
 axarr[0].plot(np.arange(N), x)
 axarr[0].set_title('random numbers')
     
-axarr[1].plot(np.arange(N), y)
-axarr[1].set_title('filtered random numbers')
+axarr[1].plot(np.arange(N), yf)
+axarr[1].set_title('lfiltered random numbers')
+
+axarr[2].plot(np.arange(N), yfs)
+axarr[2].set_title('filtered slow random numbers')
 
 plt.show()
 
