@@ -71,17 +71,14 @@ g2 = 0.9 ** 5
 A = [1, 0, 0, 0, 0, g2]          
 h = scipy.signal.lfilter(B, A, np.hstack((1, np.zeros(50))))    # Impulse response
 
-fig, axarr = plt.subplots(1, sharex=False)
 
-axarr[0].set_title('impulse response')
-axarr[0].stem(np.arange(50), y)
+#axarr[0].set_title('impulse response')
+plt.stem(np.arange(len(h)), h)
 
 
 # Matlab-compatible plot:
 #clf 
 #figure(1) 
-#stem([0:50],h,'-k') 
-#axis([0 50 -0.8 1.1])
 #ylabel('Amplitude') 
 #xlabel('Time (samples)') 
 #grid
