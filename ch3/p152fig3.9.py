@@ -68,8 +68,11 @@ B = [1, 0, 0, g1]
 
 # Feedback coefficients
 g2 = 0.9 ** 5 
-A = [1, 0, 0, 0, 0, g2]          
-h = scipy.signal.lfilter(B, A, np.hstack((1, np.zeros(N))))    # Impulse response
+A = [1, 0, 0, 0, 0, g2]     
+
+# Impulse response
+impulse = np.hstack((1, np.zeros(N)))
+h = scipy.signal.lfilter(B, A, impulse)    
 
 plt.stem(np.arange(N+1), h)
 plt.show()
