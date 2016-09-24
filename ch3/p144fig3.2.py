@@ -9,20 +9,18 @@ def filterslow(B, A, x):
     Nx = len(x)
     xv = x  #x(:)          # ensure column vector
 
-    # do the FIR part using vector processing
+    # do the FIR part using vector processing, store it in v
     v = B[0]*xv
     if NB > 1:
         for i in np.arange(1, min(NB,Nx)):
-            xdelayed = np.hstack((np.zeros(i-1), xv[0:Nx-i+1]))  #this could be i+2
+            xdelayed = np.hstack((np.zeros(i-1), xv[0:Nx-i+1]))
             v = v + B[i] * xdelayed
     
-    # fir part done, sitting in v
-
     # The feedback part is intrinsically scalar, so this loop is where we spend a lot of time.
-    y  = np.zeros(len(x))        # pre-allocate y
-    ac = -A[1:NA]              # could be NA +1
-    for i in range (Nx):                 # loop over input samples
-        t = v[i]                    # initialize accumulator
+    y  = np.zeros(len(x))               # pre-allocate y
+    ac = -A[1:NA]                       # could be NA +1
+    for i in range (Nx):                # loop over input samples
+        t = v[i]                        # initialize accumulator
         if NA > 1:
             for j in range (NA-1):
                 if i > j:
@@ -34,7 +32,7 @@ def filterslow(B, A, x):
 
 
 N = 10000
-x  = np.random.random(N)                        # random input signal
+x  = np.random.random(N)                            # random input signal
 B  = np.random.random(101)                          # random coefficients
 A  = np.hstack((1, 0.001*np.random.random(100)))    # random but probably stable
 
