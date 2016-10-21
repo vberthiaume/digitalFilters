@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b8087f00-808b-4511-90f0-d64a1c3e2dfe}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>ch3\p160fig3.11.py</StartupFile>
+    <StartupFile>ch3\p162ZeroPole.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -37,6 +37,7 @@
     <Compile Include="ch3\p144fig3.2.py" />
     <Compile Include="ch3\p152fig3.9.py" />
     <Compile Include="ch3\p160fig3.11.py" />
+    <Compile Include="ch3\p162ZeroPole.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ch2\" />
