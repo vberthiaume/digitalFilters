@@ -7,13 +7,19 @@ def filterslow(B, A, x):
     NB = len(B)
     NA = len(A)
     Nx = len(x)
-    xv = x  #x(:)          # ensure column vector
 
-    # do the FIR part using vector processing, store it in v
-    v = B[0]*xv
+    #first index of B contains gain for whole input x
+    v = B[0] * x    
+    
+    #other indices in B contain gain for delayed input, ie, feedforward gains
     if NB > 1:
-        for i in np.arange(1, min(NB,Nx)):
-            xdelayed = np.hstack((np.zeros(i-1), xv[0:Nx-i+1]))
+        # we loop until we run out of either feedforward gains or samples
+        for i in np.arange(1, min(NB, Nx)):
+            # to delay the input by i-1 samples, we simply insert i-1 0s in front of x 
+            padding  = np.zeros(i - 1)
+            xdelayed = np.hstack((padding, x[0 : Nx-i+1]))
+            #having 0s at the front of xdelayed means that the corresponding samples in v will not be updated
+            #because they were already processed on previous iterations
             v = v + B[i] * xdelayed
     
     # The feedback part is intrinsically scalar, so this loop is where we spend a lot of time.
