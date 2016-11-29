@@ -21,12 +21,32 @@
 //}
 
 //CODE FROM 3.5 TUTORIAL
-static PyObject *spam_system(PyObject *self, PyObject *args) {
-    const char *command;
+//static PyObject *spam_system(PyObject *self, PyObject *args) {
+//    const char *command;
+//
+//    if (!PyArg_ParseTuple(args, "s", &command)){
+//        return NULL;
+//	}
+//    int sts = system(command);
+//    return PyLong_FromLong(sts);
+//}
 
-    if (!PyArg_ParseTuple(args, "s", &command)){
-        return NULL;
-	}
-    int sts = system(command);
-    return PyLong_FromLong(sts);
+PyMethodDef VbCppMethods[] = {
+	{0,0,0,0}
+};
+
+static struct PyModuleDef vbCpp = {
+   PyModuleDef_HEAD_INIT,
+   "vbCpp",   /* name of module */
+   "this is my doc", /* module documentation, may be NULL */
+   -1,       /* size of per-interpreter state of the module,
+                or -1 if the module keeps state in global variables. */
+   VbCppMethods
+};
+
+
+PyMODINIT_FUNC
+PyInit_vbCpp(void)
+{
+    return PyModule_Create(&vbCpp);
 }
