@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b8087f00-808b-4511-90f0-d64a1c3e2dfe}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>ch3\p142comb.py</StartupFile>
+    <StartupFile>ch5\p244Fir.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -38,10 +38,15 @@
     <Compile Include="ch3\p152fig3.9.py" />
     <Compile Include="ch3\p160fig3.11.py" />
     <Compile Include="ch3\p162ZeroPole.py" />
+    <Compile Include="ch5\p239CppFilter.py" />
+    <Compile Include="ch5\p244Fir.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ch2\" />
     <Folder Include="ch3\" />
+    <Folder Include="ch5\" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
