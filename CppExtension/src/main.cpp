@@ -37,10 +37,9 @@ PyMethodDef VbCppMethods[] = {
 
 static struct PyModuleDef vbCpp = {
    PyModuleDef_HEAD_INIT,
-   "vbCpp",   /* name of module */
-   "this is my doc", /* module documentation, may be NULL */
-   -1,       /* size of per-interpreter state of the module,
-                or -1 if the module keeps state in global variables. */
+   "vbCpp",				// name of module
+   "this is my doc",	// module documentation, may be NULL
+   -1,					// size of per-interpreter state of the module, or -1 if the module keeps state in global variables. 
    VbCppMethods
 };
 
