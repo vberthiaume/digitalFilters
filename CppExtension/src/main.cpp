@@ -12,7 +12,7 @@ PyObject* fir3(PyObject* self, PyObject* args){
 
 PyMethodDef VbCppMethods[] = {
 	{"fir_3", (PyCFunction)fir3, METH_VARARGS, 0},
-	{0,0,0,0}
+	//{0,0,0,0}
 };
 
 static struct PyModuleDef vbCpp = {

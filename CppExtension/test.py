@@ -2,7 +2,7 @@ import vbCpp
 
 print ("\n====================\n welcome to VBCPP!!!\n====================\n")
 
-print ("attributes for the object are: ",  dir(vbCpp))
+print ("attributes for the object are: ",  dir(vbCpp), "\n")
 
 print ("__doc__ is:\t",      vbCpp.__doc__)
 print ("__loader__ is:\t",   vbCpp.__loader__)
