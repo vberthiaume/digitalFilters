@@ -1,7 +1,17 @@
 #include "include.h"
 
 
+PyObject* fir3(PyObject* self, PyObject* args){
+	__int64 input_value;
+	if(!PyArg_ParseTuple(args, "L", &input_value)){
+		return 0;
+	}
+	//we need to construct a new object to return, because python integers are immutable
+	return PyLong_FromLongLong(input_value +1);
+}
+
 PyMethodDef VbCppMethods[] = {
+	{"fir_3", (PyCFunction)fir3, METH_VARARGS, 0},
 	{0,0,0,0}
 };
 
