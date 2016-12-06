@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b8087f00-808b-4511-90f0-d64a1c3e2dfe}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>ch5\p244Fir.py</StartupFile>
+    <StartupFile>ch5\p245IIR.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -42,6 +42,7 @@
     <Compile Include="ch5\p244Fir.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ch5\p245IIR.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ch2\" />
