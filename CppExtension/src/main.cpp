@@ -1,7 +1,7 @@
 #include "include.h"
 
 
-PyObject* fir3(PyObject* self, PyObject* args){
+ PyObject* fir3(PyObject* self, PyObject* args){
 	__int64 input_value;
 	if(!PyArg_ParseTuple(args, "L", &input_value)){
 		return 0;
@@ -10,12 +10,12 @@ PyObject* fir3(PyObject* self, PyObject* args){
 	return PyLong_FromLongLong(input_value +1);
 }
 
-PyMethodDef VbCppMethods[] = {
+ PyMethodDef VbCppMethods[] = {
 	{"fir_3", (PyCFunction)fir3, METH_VARARGS, 0},
 	//{0,0,0,0}
 };
 
-static struct PyModuleDef vbCpp = {
+ struct PyModuleDef vbCpp = {
    PyModuleDef_HEAD_INIT,
    "vbCpp",				// name of module
    "this is my doc",	// module documentation, may be NULL
@@ -24,8 +24,9 @@ static struct PyModuleDef vbCpp = {
 };
 
 
-PyMODINIT_FUNC
-PyInit_vbCpp(void)
-{
+PyMODINIT_FUNC PyInit_vbCpp(void) {
     return PyModule_Create(&vbCpp);
 }
+
+
+
