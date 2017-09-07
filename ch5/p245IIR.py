@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 Nx = 1024              # input signal length (nonzero portion)
 Nh = 300               # FIR filter length
 
-
 n = np.arange(Nx)
 
 #input sinusoid
@@ -21,7 +20,6 @@ A = np.array([1, -0.99])
 #i had an error with B being only 1, so I made it an array... 
 B = np.array([1, 0])
 y = scipy.signal.lfilter(B,A,xzp)    # filtered output signal
-
 
 # my plottings
 Nzp = np.arange(len(xzp))

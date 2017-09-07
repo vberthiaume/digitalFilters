@@ -1,3 +1,4 @@
+# fig2.2 p.123
 # simplpm2.m - block-oriented version of simplpm1.m
 
 import numpy as np
@@ -7,7 +8,6 @@ N = 10 			    # length of test input signal
 x = np.arange(1,N)	# test input signal
 B = [1.0, 1.0]  	# feedforward coefficients
 A = 1.0      		# feedback coefficients (no-feedback case)
-
 
 # PROCESS IT ALL IN ONE SHOT
 y = scipy.signal.lfilter(B, A, x)       
