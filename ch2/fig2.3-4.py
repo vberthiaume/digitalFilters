@@ -59,7 +59,7 @@ def swanal(t,f,B,A):
 
 
         phases[k] = phaseout-phasein
-        #splot.swanalplot(t, s, f, k, y, ampin, phasein) # signal plotting script
+        splot.swanalplot(t, s, f, k, y, ampin, phasein) # signal plotting script
 
     return gains, phases
 
@@ -73,15 +73,15 @@ B               = [1,1]                         # filter feedforward coefficient
 A               = [1]                           # filter feedback coefficients (none)
 N               = 10.0                          # number of sinusoidal test frequencies
 fs              = 1.0                           # sampling rate in Hz (arbitrary)
-fmax            = fs/2.34567                          # highest frequency to look at
+fmax            = fs/2.34567                    # highest frequency to look at
 df              = fmax/(N-1)                    # spacing between frequencies
 f               = np.arange(0, fmax+df/2, df)   # sampled frequency axis
 dt              = 1/fs                          # sampling interval in seconds
-tmax            = 100.0                          # number of seconds to run each sine test
+tmax            = 100.0                         # number of seconds to run each sine test
 t               = np.arange(0, tmax+dt/2, dt)   # sampled time axis
 
 #ACTUAL ANALYSES
-#[gains, phases]  = swanal(t,f/fs,B,A)           # sine-wave analysis
-[gains, phases]  = swanac.swanalc(t,f/fs,B,A)           # COMPLEX sine-wave analysis
+#[gains, phases]  = swanal(t,f/fs,B,A)          # sine-wave analysis
+[gains, phases]  = swanac.swanalc(t,f/fs,B,A)   # COMPLEX sine-wave analysis
 smain.swanalmainplot(f, fs, gains, phases)      # final plots and comparison to theory  
 

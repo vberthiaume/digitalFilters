@@ -12,20 +12,34 @@
 # }
 
 import numpy as np
-#import scipy.signal
 import matplotlib.pyplot as plt
 
-#get an input sinusoid
-Nx = 1024           
-n = np.arange(Nx)    
-x = np.sin(n*2*np.pi*7/Nx)   
+def simplestLP (x):  
+    y = []
+    y.append(x[0])
+    for i in np.arange(len(x)-1):
+        y.append(x[i] + x[i+1])
 
+    return y;
+
+# get an input sinusoid
+Nx = 1024           
+n = np.arange(Nx)
+f = 1
+x = np.sin(2*np.pi*f*n/Nx)   
+
+# filter it
+y = simplestLP(x)
+
+# display the thing
 fig, axarr = plt.subplots(2, sharex=False)
 
 axarr[0].plot(n, x)
-axarr[0].set_title('zero-padded input')
+axarr[0].set_title('input')
     
-axarr[1].plot(n, x)
+axarr[1].plot(n, y)
 axarr[1].set_title('filtered output')
+
+#plt.plot(n, x)
 
 plt.show()
